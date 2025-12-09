@@ -1,4 +1,5 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal } from "drizzle-orm/mysql-core";
+import { relations } from "drizzle-orm";
 
 /**
  * Core user table backing auth flow.
@@ -25,4 +26,81 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+// Product types: calhas, rufos, pingadeiras
+export const products = mysqlTable("products", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  type: mysqlEnum("type", ["calha", "rufo", "pingadeira"]).notNull(),
+  description: text("description"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Product = typeof products.$inferSelect;
+export type InsertProduct = typeof products.$inferInsert;
+
+// Materials for products
+export const materials = mysqlTable("materials", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description"),
+  pricePerSqMeter: int("pricePerSqMeter").notNull(), // in cents (13000 = R$ 130,00)
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Material = typeof materials.$inferSelect;
+export type InsertMaterial = typeof materials.$inferInsert;
+
+// Budgets/Orçamentos
+export const budgets = mysqlTable("budgets", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  clientName: varchar("clientName", { length: 255 }),
+  clientEmail: varchar("clientEmail", { length: 320 }),
+  totalPrice: int("totalPrice").notNull(), // in cents
+  status: mysqlEnum("status", ["draft", "completed", "sent"]).default("draft").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Budget = typeof budgets.$inferSelect;
+export type InsertBudget = typeof budgets.$inferInsert;
+
+// Budget items - individual products in a budget
+export const budgetItems = mysqlTable("budgetItems", {
+  id: int("id").autoincrement().primaryKey(),
+  budgetId: int("budgetId").notNull(),
+  productId: int("productId").notNull(),
+  materialId: int("materialId").notNull(),
+  quantity: int("quantity").notNull(),
+  length: int("length").notNull(), // in cm
+  width: int("width").notNull(), // in cm
+  squareMeter: int("squareMeter").notNull(), // calculated m² * 10000 for precision
+  unitPrice: int("unitPrice").notNull(), // in cents
+  totalPrice: int("totalPrice").notNull(), // in cents
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type BudgetItem = typeof budgetItems.$inferSelect;
+export type InsertBudgetItem = typeof budgetItems.$inferInsert;
+
+// Relations
+export const budgetsRelations = relations(budgets, ({ many }) => ({
+  items: many(budgetItems),
+}));
+
+export const budgetItemsRelations = relations(budgetItems, ({ one }) => ({
+  budget: one(budgets, {
+    fields: [budgetItems.budgetId],
+    references: [budgets.id],
+  }),
+  product: one(products, {
+    fields: [budgetItems.productId],
+    references: [products.id],
+  }),
+  material: one(materials, {
+    fields: [budgetItems.materialId],
+    references: [materials.id],
+  }),
+}));
