@@ -84,3 +84,16 @@
 - [x] Adicionar link WhatsApp direto no painel administrativo
 - [x] Integrar telefone nas notificações ao proprietário
 - [x] Testar validação e funcionamento do WhatsApp
+
+
+## Redesign com Logo Oficial (Nova Funcionalidade)
+- [x] Converter logo PNG para SVG otimizado
+- [x] Criar versões responsivas da logo (desktop, tablet, mobile)
+- [x] Atualizar paleta de cores para azul marinho (#001F5C) e laranja (#FF8C00)
+- [x] Integrar logo no header/navegação
+- [x] Redesenhar página inicial com nova identidade visual
+- [x] Atualizar cores dos botões (laranja para CTA)
+- [x] Atualizar cores dos cards e componentes
+- [x] Atualizar footer com logo e informações
+- [x] Testar responsividade com nova logo
+- [x] Validar contraste e acessibilidade

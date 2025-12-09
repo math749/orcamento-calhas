@@ -332,7 +332,7 @@ export default function Budget() {
                   </div>
                 )}
 
-                <Button onClick={handleAddItem} className="w-full gap-2">
+                <Button onClick={handleAddItem} className="w-full gap-2 bg-orange-500 hover:bg-orange-600">
                   <Plus className="w-5 h-5" />
                   Adicionar Item
                 </Button>
@@ -398,14 +398,14 @@ export default function Budget() {
                       </div>
 
                       <div className="space-y-2">
-                        <Button
-                          onClick={handleCreateBudget}
-                          disabled={createBudgetMutation.isPending}
-                          className="w-full gap-2"
-                        >
-                          <Download className="w-5 h-5" />
-                          {createBudgetMutation.isPending ? "Criando..." : "Gerar Orçamento"}
-                        </Button>
+                      <Button
+                        onClick={handleCreateBudget}
+                        disabled={createBudgetMutation.isPending}
+                        className="w-full gap-2 bg-orange-500 hover:bg-orange-600"
+                      >
+                        <Download className="w-5 h-5" />
+                        {createBudgetMutation.isPending ? "Criando..." : "Gerar Orçamento"}
+                      </Button>
                       </div>
                     </div>
                   </>
