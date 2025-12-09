@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <nav className="bg-white shadow-md sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-2 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Calhas Em Geral" className="h-12 w-auto" />
+            <img src="/logo-horizontal.png" alt="Calhas Em Geral" className="h-14 w-auto object-contain" />
           </div>
           <div className="flex gap-4">
             {isAuthenticated ? (
@@ -194,7 +194,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <img src="/logo.png" alt="Calhas Em Geral" className="h-12 w-auto mb-4" />
+              <img src="/logo-horizontal.png" alt="Calhas Em Geral" className="h-20 w-auto mb-4 object-contain" />
               <p className="text-blue-100">
                 Solução completa para orçamentos de calhas, rufos e pingadeiras.
               </p>
