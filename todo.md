@@ -121,3 +121,18 @@
 - [x] Integrar galeria na página inicial
 - [x] Adicionar descrições dos projetos
 - [x] Testar responsividade da galeria em mobile/tablet/desktop
+
+
+## Seção de Portfólio com Fotos Reais (Nova Funcionalidade)
+- [x] Gerar 6-8 imagens profissionais de serviços concluídos
+- [x] Criar componente de galeria de portfólio com filtros
+- [x] Integrar galeria de portfólio na página inicial
+- [x] Adicionar descrições e detalhes dos projetos
+- [x] Testar responsividade da galeria
+
+## Integração Google Business Profile (Nova Funcionalidade)
+- [x] Obter código embed do Google Business Profile da GCALHAS
+- [x] Criar componente para exibir Google Business Profile
+- [x] Integrar avaliações e informações do Google
+- [x] Adicionar link para perfil completo do Google
+- [x] Testar integração e responsividade

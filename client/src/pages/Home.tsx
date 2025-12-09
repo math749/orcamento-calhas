@@ -5,6 +5,8 @@ import { ArrowRight, Calculator, FileText, Settings, Zap } from "lucide-react";
 import { useLocation } from "wouter";
 import { getLoginUrl } from "@/const";
 import GalleryBeforeAfter from "@/components/GalleryBeforeAfter";
+import Portfolio from "@/components/Portfolio";
+import GoogleBusinessProfile from "@/components/GoogleBusinessProfile";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
@@ -171,6 +173,12 @@ export default function Home() {
 
       {/* Gallery Section */}
       <GalleryBeforeAfter />
+
+      {/* Portfolio Section */}
+      <Portfolio />
+
+      {/* Google Business Profile Section */}
+      <GoogleBusinessProfile />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-900 to-orange-500 text-white">
