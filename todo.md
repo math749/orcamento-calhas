@@ -73,3 +73,14 @@
 - [x] Revisar todas as funcionalidades
 - [x] Criar checkpoint final
 - [x] Entregar site ao usuário
+
+
+## Integração WhatsApp/Telefone (Nova Funcionalidade)
+- [x] Adicionar campo de telefone na tabela de orçamentos
+- [x] Validar formato de telefone no formulário
+- [x] Adicionar campo de telefone no formulário de orçamento
+- [x] Exibir telefone no histórico de orçamentos
+- [x] Exibir telefone nos detalhes do orçamento
+- [x] Adicionar link WhatsApp direto no painel administrativo
+- [x] Integrar telefone nas notificações ao proprietário
+- [x] Testar validação e funcionamento do WhatsApp

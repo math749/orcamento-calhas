@@ -123,7 +123,7 @@ export async function getProductById(id: number) {
 }
 
 // Budget queries
-export async function createBudget(budget: InsertBudget) {
+export async function createBudget(budget: InsertBudget & { clientPhone?: string }) {
   const db = await getDb();
   if (!db) throw new Error('Database not available');
   const result = await db.insert(budgets).values(budget);

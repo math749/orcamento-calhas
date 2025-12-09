@@ -44,6 +44,7 @@ export default function Budget() {
 
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
+  const [clientPhone, setClientPhone] = useState("");
 
   // Calculate price for current item
   const { data: priceData } = calculatePrice(
@@ -124,6 +125,7 @@ export default function Budget() {
       const result = await createBudgetMutation.mutateAsync({
         clientName: clientName || undefined,
         clientEmail: clientEmail || undefined,
+        clientPhone: clientPhone || undefined,
         items: items.map((item) => ({
           productId: item.productId,
           materialId: item.materialId,
@@ -134,6 +136,10 @@ export default function Budget() {
       });
 
       toast.success("Orçamento criado com sucesso!");
+      setClientName("");
+      setClientEmail("");
+      setClientPhone("");
+      setItems([]);
       navigate(`/budget/${result.budgetId}`);
     } catch (error) {
       toast.error("Erro ao criar orçamento");
@@ -177,6 +183,16 @@ export default function Budget() {
                     placeholder="Ex: joao@example.com"
                     value={clientEmail}
                     onChange={(e) => setClientEmail(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="clientPhone">Telefone/WhatsApp (opcional)</Label>
+                  <Input
+                    id="clientPhone"
+                    type="tel"
+                    placeholder="Ex: (11) 9 9999-9999"
+                    value={clientPhone}
+                    onChange={(e) => setClientPhone(e.target.value)}
                   />
                 </div>
               </CardContent>

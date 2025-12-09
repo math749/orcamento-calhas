@@ -132,6 +132,7 @@ export const appRouter = router({
         z.object({
           clientName: z.string().optional(),
           clientEmail: z.string().email().optional(),
+          clientPhone: z.string().optional(),
           items: z.array(
             z.object({
               productId: z.number(),
@@ -172,6 +173,7 @@ export const appRouter = router({
           userId: ctx.user.id,
           clientName: input.clientName,
           clientEmail: input.clientEmail,
+          clientPhone: input.clientPhone,
           totalPrice,
           status: "completed",
         });
@@ -195,9 +197,10 @@ export const appRouter = router({
         }
 
         // Notify owner
+        const phoneInfo = input.clientPhone ? `\nTelefone: ${input.clientPhone}` : "";
         await notifyOwner({
           title: "Novo Orçamento Criado",
-          content: `Um novo orçamento foi criado por ${ctx.user.name || "um usuário"}. Total: R$ ${(totalPrice / 100).toFixed(2)}`,
+          content: `Um novo orçamento foi criado por ${ctx.user.name || "um usuário"}. Total: R$ ${(totalPrice / 100).toFixed(2)}${phoneInfo}`,
         });
 
         return { budgetId, totalPrice };

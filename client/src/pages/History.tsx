@@ -76,7 +76,7 @@ export default function History() {
                               : "Rascunho"}
                         </span>
                       </div>
-                      <div className="grid md:grid-cols-3 gap-4 text-sm text-slate-600">
+                      <div className="grid md:grid-cols-4 gap-4 text-sm text-slate-600">
                         <div>
                           <p className="text-xs text-slate-500">Data</p>
                           <p className="font-semibold text-slate-900">
@@ -89,6 +89,12 @@ export default function History() {
                           <div>
                             <p className="text-xs text-slate-500">Cliente</p>
                             <p className="font-semibold text-slate-900">{budget.clientName}</p>
+                          </div>
+                        )}
+                        {budget.clientPhone && (
+                          <div>
+                            <p className="text-xs text-slate-500">Telefone</p>
+                            <p className="font-semibold text-slate-900">{budget.clientPhone}</p>
                           </div>
                         )}
                         <div>

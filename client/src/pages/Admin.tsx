@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, Plus, Edit2, Trash2 } from "lucide-react";
+import { ArrowLeft, Plus, Edit2, Trash2, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Admin() {
@@ -285,6 +285,7 @@ export default function Admin() {
                           <th className="text-left py-3 px-4 font-semibold">Total</th>
                           <th className="text-left py-3 px-4 font-semibold">Status</th>
                           <th className="text-left py-3 px-4 font-semibold">Data</th>
+                          <th className="text-left py-3 px-4 font-semibold">Contato</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -292,7 +293,10 @@ export default function Admin() {
                           <tr key={budget.id} className="border-b border-slate-100">
                             <td className="py-3 px-4">#{budget.id}</td>
                             <td className="py-3 px-4">
-                              {budget.clientName || "Sem nome"}
+                              <div>{budget.clientName || "Sem nome"}</div>
+                              {budget.clientPhone && (
+                                <div className="text-xs text-slate-500">{budget.clientPhone}</div>
+                              )}
                             </td>
                             <td className="py-3 px-4 font-bold text-blue-600">
                               R$ {(budget.totalPrice / 100).toFixed(2)}
@@ -316,6 +320,19 @@ export default function Admin() {
                             </td>
                             <td className="py-3 px-4 text-slate-600">
                               {new Date(budget.createdAt).toLocaleDateString("pt-BR")}
+                            </td>
+                            <td className="py-3 px-4">
+                              {budget.clientPhone && (
+                                <a
+                                  href={`https://wa.me/55${budget.clientPhone.replace(/\D/g, "")}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded text-xs hover:bg-green-200"
+                                >
+                                  <MessageCircle className="w-3 h-3" />
+                                  WhatsApp
+                                </a>
+                              )}
                             </td>
                           </tr>
                         ))}

@@ -15,6 +15,13 @@
       "when": 1765238143259,
       "tag": "0001_sparkling_ronan",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1765238821709,
+      "tag": "0002_new_avengers",
+      "breakpoints": true
     }
   ]
 }

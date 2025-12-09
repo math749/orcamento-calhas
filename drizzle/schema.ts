@@ -55,17 +55,28 @@ export type InsertMaterial = typeof materials.$inferInsert;
 // Budgets/Orçamentos
 export const budgets = mysqlTable("budgets", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId"),
+  userId: int("userId").notNull(),
   clientName: varchar("clientName", { length: 255 }),
   clientEmail: varchar("clientEmail", { length: 320 }),
-  totalPrice: int("totalPrice").notNull(), // in cents
-  status: mysqlEnum("status", ["draft", "completed", "sent"]).default("draft").notNull(),
+  clientPhone: varchar("clientPhone", { length: 20 }),
+  totalPrice: int("totalPrice").notNull(),
+  status: mysqlEnum("status", ["draft", "sent", "completed"]).default("draft").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
 export type Budget = typeof budgets.$inferSelect;
 export type InsertBudget = typeof budgets.$inferInsert;
+
+// Helper function to format phone number for WhatsApp
+export function formatPhoneForWhatsApp(phone: string): string {
+  // Remove all non-digit characters
+  const cleaned = phone.replace(/\D/g, "");
+  // If it starts with 0, remove it (Brazilian format)
+  const formatted = cleaned.startsWith("0") ? cleaned.slice(1) : cleaned;
+  // Return in format: 55 + country code + number
+  return `55${formatted}`;
+}
 
 // Budget items - individual products in a budget
 export const budgetItems = mysqlTable("budgetItems", {
