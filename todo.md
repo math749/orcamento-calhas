@@ -112,3 +112,12 @@
 - [x] Validar contraste e acessibilidade
 - [x] Criar versão horizontal do logo para header
 - [x] Integrar logo horizontal em todas as páginas
+
+
+## Galeria de Antes e Depois (Nova Funcionalidade)
+- [x] Gerar 4-5 imagens profissionais de antes de trabalhos com calhas
+- [x] Gerar 4-5 imagens profissionais de depois de trabalhos com calhas
+- [x] Criar componente de galeria com efeito before/after interativo
+- [x] Integrar galeria na página inicial
+- [x] Adicionar descrições dos projetos
+- [x] Testar responsividade da galeria em mobile/tablet/desktop
