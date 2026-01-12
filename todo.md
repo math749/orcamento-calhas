@@ -136,3 +136,13 @@
 - [x] Integrar avaliações e informações do Google
 - [x] Adicionar link para perfil completo do Google
 - [x] Testar integração e responsividade
+
+
+## Análise Financeira Detalhada (Nova Funcionalidade)
+- [x] Criar componente de análise financeira com cálculos
+- [x] Implementar lógica de divisão: Material, GCALHAS (30%), Carro (30%), Nildo (27%), Matheus (25%), Caixa
+- [x] Integrar análise na página de detalhes do orçamento
+- [x] Criar visualização gráfica (gráfico de pizza ou barras)
+- [x] Adicionar tabela detalhada com valores
+- [x] Testar cálculos com diferentes valores
+- [x] Validar responsividade em mobile/tablet/desktop

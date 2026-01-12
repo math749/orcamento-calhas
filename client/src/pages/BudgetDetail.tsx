@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowLeft, Download, Printer, Copy, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
+import FinancialAnalysis from "@/components/FinancialAnalysis";
 
 export default function BudgetDetail() {
   const { id } = useParams<{ id: string }>();
@@ -204,6 +205,12 @@ export default function BudgetDetail() {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Financial Analysis Section */}
+            <FinancialAnalysis 
+              totalValue={totalPrice / 100} 
+              materialCost={0}
+            />
           </div>
 
           <div>
@@ -259,6 +266,9 @@ export default function BudgetDetail() {
                 <div className="text-xs text-slate-500 text-center pt-4">
                   Orçamento #{budget.id}
                 </div>
+                <p className="text-xs text-slate-500 text-center pt-2">
+                  💡 Dica: Veja a análise financeira completa abaixo
+                </p>
               </CardContent>
             </Card>
           </div>
