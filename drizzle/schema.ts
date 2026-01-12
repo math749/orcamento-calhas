@@ -85,8 +85,8 @@ export const budgetItems = mysqlTable("budgetItems", {
   productId: int("productId").notNull(),
   materialId: int("materialId").notNull(),
   quantity: int("quantity").notNull(),
-  length: int("length").notNull(), // in cm
-  width: int("width").notNull(), // in cm
+  length: int("length").default(0).notNull(), // in cm
+  width: int("width").default(0).notNull(), // in cm
   squareMeter: int("squareMeter").notNull(), // calculated m² * 10000 for precision
   unitPrice: int("unitPrice").notNull(), // in cents
   totalPrice: int("totalPrice").notNull(), // in cents

@@ -1,0 +1,13 @@
+{
+  "query": "\n-- Inserir orçamento de exemplo\nINSERT INTO budgets (userId, clientName, clientEmail, clientPhone, totalPrice, status, createdAt, updatedAt) \nVALUES (1, 'João Silva - Residência', 'joao@example.com', '(11) 99999-8888', 350000, 'completed', NOW(), NOW());\n\n-- Obter o ID do orçamento inserido\nSELECT LAST_INSERT_ID() as budgetId;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 31yKhUaSwQHxsA9.b4e01df25626 --database mLvyH7FvayhGTzt26bHicM --execute \n-- Inserir orçamento de exemplo\nINSERT INTO budgets (userId, clientName, clientEmail, clientPhone, totalPrice, status, createdAt, updatedAt) \nVALUES (1, 'João Silva - Residência', 'joao@example.com', '(11) 99999-8888', 350000, 'completed', NOW(), NOW());\n\n-- Obter o ID do orçamento inserido\nSELECT LAST_INSERT_ID() as budgetId;\n",
+  "rows": [
+    {
+      "budgetId": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "budgetId\n3\n",
+  "stderr": "",
+  "execution_time_ms": 457
+}
