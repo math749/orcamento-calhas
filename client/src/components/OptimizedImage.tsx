@@ -30,6 +30,15 @@ export default function OptimizedImage({
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
+  // Don't render if src is empty to avoid browser re-downloading the page
+  if (!src) {
+    return (
+      <div className={cn("relative overflow-hidden bg-slate-200", className)}>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200" />
+      </div>
+    );
+  }
+
   useEffect(() => {
     // Create IntersectionObserver for lazy loading
     const observer = new IntersectionObserver(
