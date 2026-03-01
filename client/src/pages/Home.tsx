@@ -16,11 +16,11 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Navigation */}
       <nav className="bg-white shadow-md sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-2 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <img src="/logo-horizontal.png" alt="Calhas Em Geral" className="h-14 w-auto object-contain" />
+        <div className="container mx-auto px-4 py-2 flex justify-between items-center flex-wrap">
+          <div className="flex items-center gap-2 md:gap-3">
+            <img src="/logo-horizontal.png" alt="Calhas Em Geral" className="h-10 md:h-14 w-auto object-contain" />
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-2 md:gap-4 flex-wrap justify-end">
             {isAuthenticated ? (
               <>
                 <Button variant="ghost" onClick={() => navigate("/budget")}>
@@ -48,46 +48,46 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="container mx-auto px-4 py-12 md:py-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
               Orçamentos de Calhas com <span className="bg-gradient-to-r from-blue-900 to-orange-500 bg-clip-text text-transparent">Elegância</span>
             </h1>
-            <p className="text-xl text-slate-600 mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-6 md:mb-8">
               A solução completa para orçar calhas, rufos e pingadeiras com precisão e elegância.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-2 md:gap-4 flex-col sm:flex-row">
               {isAuthenticated ? (
-                <Button size="lg" onClick={() => navigate("/budget")} className="gap-2 bg-orange-500 hover:bg-orange-600">
-                  Criar Orçamento <ArrowRight className="w-5 h-5" />
+                <Button onClick={() => navigate("/budget")} className="gap-2 bg-orange-500 hover:bg-orange-600 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
+                  Criar Orçamento <ArrowRight className="w-4 md:w-5 h-4 md:h-5" />
                 </Button>
               ) : (
-                <Button size="lg" asChild className="gap-2 bg-orange-500 hover:bg-orange-600">
+                <Button asChild className="gap-2 bg-orange-500 hover:bg-orange-600 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
                   <a href={getLoginUrl()}>
-                    Começar Agora <ArrowRight className="w-5 h-5" />
+                    Começar Agora <ArrowRight className="w-4 md:w-5 h-4 md:h-5" />
                   </a>
                 </Button>
               )}
-              <Button size="lg" variant="outline" className="border-blue-900 text-blue-900 hover:bg-blue-50">
+              <Button variant="outline" className="border-blue-900 text-blue-900 hover:bg-blue-50 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
                 Saiba Mais
               </Button>
             </div>
           </div>
-          <div className="relative">
-            <div className="bg-gradient-to-br from-blue-900 to-orange-500 rounded-2xl p-8 text-white shadow-2xl">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Calculator className="w-8 h-8" />
-                  <span className="text-xl font-semibold">Cálculos Precisos</span>
+          <div className="relative mt-8 md:mt-0">
+            <div className="bg-gradient-to-br from-blue-900 to-orange-500 rounded-2xl p-6 md:p-8 text-white shadow-2xl">
+              <div className="space-y-3 md:space-y-4">
+                <div className="flex items-center gap-2 md:gap-3">
+                  <Calculator className="w-6 md:w-8 h-6 md:h-8" />
+                  <span className="text-base md:text-xl font-semibold">Cálculos Precisos</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Zap className="w-8 h-8" />
-                  <span className="text-xl font-semibold">Resultados Instantâneos</span>
+                <div className="flex items-center gap-2 md:gap-3">
+                  <Zap className="w-6 md:w-8 h-6 md:h-8" />
+                  <span className="text-base md:text-xl font-semibold">Resultados Instantâneos</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <FileText className="w-8 h-8" />
-                  <span className="text-xl font-semibold">PDF Profissional</span>
+                <div className="flex items-center gap-2 md:gap-3">
+                  <FileText className="w-6 md:w-8 h-6 md:h-8" />
+                  <span className="text-base md:text-xl font-semibold">PDF Profissional</span>
                 </div>
               </div>
             </div>
@@ -96,12 +96,12 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-slate-900 mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8 md:mb-16">
             Funcionalidades Principais
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             <Card className="border-l-4 border-l-blue-900 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <CardTitle className="text-blue-900">Formulário Interativo</CardTitle>
@@ -181,10 +181,10 @@ export default function Home() {
       <GoogleBusinessProfile />
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-900 to-orange-500 text-white">
+      <section className="py-12 md:py-20 bg-gradient-to-r from-blue-900 to-orange-500 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Pronto para Começar?</h2>
-          <p className="text-xl mb-8 text-blue-50">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Pronto para Começar?</h2>
+          <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-blue-50">
             Crie seu primeiro orçamento agora e veja como é fácil!
           </p>
           {isAuthenticated ? (

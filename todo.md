@@ -146,3 +146,30 @@
 - [x] Adicionar tabela detalhada com valores
 - [x] Testar cálculos com diferentes valores
 - [x] Validar responsividade em mobile/tablet/desktop
+
+
+## Melhorias de Design e UX (Nova Iteração)
+- [x] Melhorar responsividade em dispositivos móveis
+- [ ] Adicionar animações de carregamento e transições suaves
+- [ ] Otimizar tamanho das imagens de portfólio
+- [ ] Melhorar contraste de cores em alguns elementos
+- [ ] Adicionar tooltips informativos nos campos do formulário
+- [ ] Implementar validação em tempo real no formulário
+- [ ] Adicionar feedback visual ao interagir com botões
+- [ ] Melhorar layout da tabela de análise financeira em mobile
+- [ ] Adicionar breadcrumbs de navegação
+- [ ] Implementar scroll suave entre seções
+
+## Correção de Bugs
+- [ ] Verificar erro ao gerar orçamento (se ainda houver)
+- [ ] Corrigir alinhamento de elementos em telas pequenas
+- [ ] Validar funcionamento do WhatsApp em todos os navegadores
+- [ ] Testar geração de PDF em diferentes dispositivos
+- [ ] Verificar carregamento de imagens de portfólio
+
+## Otimização de Performance
+- [ ] Lazy loading para imagens de portfólio
+- [ ] Compressão de imagens
+- [ ] Otimização de CSS e JavaScript
+- [ ] Cache de dados do orçamento
+- [ ] Redução de requisições ao servidor
