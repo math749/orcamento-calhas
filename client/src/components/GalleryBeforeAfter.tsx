@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import OptimizedImage from "@/components/OptimizedImage";
 
 interface Project {
   id: number;
@@ -81,7 +82,7 @@ export default function GalleryBeforeAfter() {
             onTouchMove={handleTouchMove}
           >
             {/* Before Image */}
-            <img
+            <OptimizedImage
               src={current.before}
               alt="Antes"
               className="w-full h-auto block"
@@ -92,11 +93,10 @@ export default function GalleryBeforeAfter() {
               className="absolute top-0 left-0 h-full overflow-hidden"
               style={{ width: `${sliderPosition}%` }}
             >
-              <img
+              <OptimizedImage
                 src={current.after}
                 alt="Depois"
                 className="w-full h-full object-cover"
-                style={{ width: `${(100 / sliderPosition) * 100}%` }}
               />
             </div>
 

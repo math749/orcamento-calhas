@@ -173,3 +173,13 @@
 - [ ] Otimização de CSS e JavaScript
 - [ ] Cache de dados do orçamento
 - [ ] Redução de requisições ao servidor
+
+
+## Otimização de Imagens e Performance
+- [x] Criar componente de imagem otimizada com lazy loading
+- [x] Implementar IntersectionObserver para lazy loading
+- [x] Adicionar placeholders/skeleton loading
+- [x] Integrar lazy loading no portfólio
+- [x] Integrar lazy loading na galeria before/after
+- [x] Testar performance com Lighthouse
+- [x] Validar carregamento em conexões lentas

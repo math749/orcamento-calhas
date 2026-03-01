@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import OptimizedImage from "@/components/OptimizedImage";
 
 interface PortfolioItem {
   id: number;
@@ -118,10 +119,10 @@ export default function Portfolio() {
               onClick={() => handleImageClick(item)}
               className="group cursor-pointer relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <img
+              <OptimizedImage
                 src={item.image}
                 alt={item.title}
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                className="w-full h-64 group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                 <h3 className="text-white font-bold text-lg">{item.title}</h3>
@@ -144,9 +145,9 @@ export default function Portfolio() {
               </button>
 
               {/* Image */}
-              <img
-                src={filteredItems[currentIndex]?.image}
-                alt={filteredItems[currentIndex]?.title}
+              <OptimizedImage
+                src={filteredItems[currentIndex]?.image || ""}
+                alt={filteredItems[currentIndex]?.title || ""}
                 className="w-full h-auto rounded-lg"
               />
 
