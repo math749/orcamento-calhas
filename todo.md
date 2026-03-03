@@ -183,3 +183,11 @@
 - [x] Integrar lazy loading na galeria before/after
 - [x] Testar performance com Lighthouse
 - [x] Validar carregamento em conexões lentas
+
+
+## Imagem de Fundo Hero Section (Nova Funcionalidade)
+- [x] Copiar imagem de fundo para pasta public
+- [x] Integrar imagem como background na hero section
+- [x] Adicionar overlay semi-transparente para legibilidade
+- [x] Otimizar imagem para diferentes tamanhos de tela
+- [x] Testar responsividade com background

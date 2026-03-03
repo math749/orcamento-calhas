@@ -13,7 +13,7 @@ export default function Home() {
   const [, navigate] = useLocation();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen">
       {/* Navigation */}
       <nav className="bg-white shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-2 flex justify-between items-center flex-wrap">
@@ -47,47 +47,56 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-12 md:py-20">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-              Orçamentos de Calhas com <span className="bg-gradient-to-r from-blue-900 to-orange-500 bg-clip-text text-transparent">Elegância</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-6 md:mb-8">
-              A solução completa para orçar calhas, rufos e pingadeiras com precisão e elegância.
-            </p>
-            <div className="flex gap-2 md:gap-4 flex-col sm:flex-row">
-              {isAuthenticated ? (
-                <Button onClick={() => navigate("/budget")} className="gap-2 bg-orange-500 hover:bg-orange-600 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
-                  Criar Orçamento <ArrowRight className="w-4 md:w-5 h-4 md:h-5" />
+      {/* Hero Section with Background */}
+      <section 
+        className="relative min-h-screen md:min-h-[600px] bg-cover bg-center bg-fixed flex items-center"
+        style={{ backgroundImage: 'url(/hero-background.jpg)' }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/45"></div>
+        
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 py-12 md:py-20 relative z-10 w-full">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight drop-shadow-lg">
+                Orçamentos de Calhas com <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Elegância</span>
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/95 mb-6 md:mb-8 drop-shadow-md">
+                A solução completa para orçar calhas, rufos e pingadeiras com precisão e elegância.
+              </p>
+              <div className="flex gap-2 md:gap-4 flex-col sm:flex-row">
+                {isAuthenticated ? (
+                  <Button onClick={() => navigate("/budget")} className="gap-2 bg-orange-500 hover:bg-orange-600 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
+                    Criar Orçamento <ArrowRight className="w-4 md:w-5 h-4 md:h-5" />
+                  </Button>
+                ) : (
+                  <Button asChild className="gap-2 bg-orange-500 hover:bg-orange-600 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
+                    <a href={getLoginUrl()}>
+                      Começar Agora <ArrowRight className="w-4 md:w-5 h-4 md:h-5" />
+                    </a>
+                  </Button>
+                )}
+                <Button variant="outline" className="border-white text-white hover:bg-white/20 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
+                  Saiba Mais
                 </Button>
-              ) : (
-                <Button asChild className="gap-2 bg-orange-500 hover:bg-orange-600 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
-                  <a href={getLoginUrl()}>
-                    Começar Agora <ArrowRight className="w-4 md:w-5 h-4 md:h-5" />
-                  </a>
-                </Button>
-              )}
-              <Button variant="outline" className="border-blue-900 text-blue-900 hover:bg-blue-50 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
-                Saiba Mais
-              </Button>
+              </div>
             </div>
-          </div>
-          <div className="relative mt-8 md:mt-0">
-            <div className="bg-gradient-to-br from-blue-900 to-orange-500 rounded-2xl p-6 md:p-8 text-white shadow-2xl">
-              <div className="space-y-3 md:space-y-4">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <Calculator className="w-6 md:w-8 h-6 md:h-8" />
-                  <span className="text-base md:text-xl font-semibold">Cálculos Precisos</span>
-                </div>
-                <div className="flex items-center gap-2 md:gap-3">
-                  <Zap className="w-6 md:w-8 h-6 md:h-8" />
-                  <span className="text-base md:text-xl font-semibold">Resultados Instantâneos</span>
-                </div>
-                <div className="flex items-center gap-2 md:gap-3">
-                  <FileText className="w-6 md:w-8 h-6 md:h-8" />
-                  <span className="text-base md:text-xl font-semibold">PDF Profissional</span>
+            <div className="relative mt-8 md:mt-0">
+              <div className="bg-gradient-to-br from-blue-900/90 to-orange-500/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 text-white shadow-2xl">
+                <div className="space-y-3 md:space-y-4">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <Calculator className="w-6 md:w-8 h-6 md:h-8" />
+                    <span className="text-base md:text-xl font-semibold">Cálculos Precisos</span>
+                  </div>
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <Zap className="w-6 md:w-8 h-6 md:h-8" />
+                    <span className="text-base md:text-xl font-semibold">Resultados Instantâneos</span>
+                  </div>
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <FileText className="w-6 md:w-8 h-6 md:h-8" />
+                    <span className="text-base md:text-xl font-semibold">PDF Profissional</span>
+                  </div>
                 </div>
               </div>
             </div>
