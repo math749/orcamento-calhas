@@ -28,10 +28,30 @@ interface BudgetItemWithCalculation extends BudgetItemInput {
 
 export default function Budget() {
   const [, navigate] = useLocation();
-  const { data: products } = trpc.catalog.getProducts.useQuery();
-  const { data: materials } = trpc.catalog.getMaterials.useQuery();
-  const calculatePrice = trpc.budget.calculatePrice.useQuery;
-  const createBudgetMutation = trpc.budget.createBudget.useMutation();
+  const { data: products, isLoading: productsLoading } = trpc.catalog.getProducts.useQuery();
+  const { data: materials, isLoading: materialsLoading } = trpc.catalog.getMaterials.useQuery();
+  const { data: priceData, isLoading: priceLoading } = trpc.budget.calculatePrice.useQuery(
+    {
+      materialId: 0,
+      length: 0,
+      width: 0,
+      quantity: 0,
+    },
+    { enabled: false }
+  );
+  const createBudgetMutation = trpc.budget.createBudget.useMutation({
+    onError: (error) => {
+      if (error.data?.code === 'BAD_REQUEST') {
+        toast.error(error.message || 'Dados inválidos. Verifique os campos.');
+      } else if (error.data?.code === 'UNAUTHORIZED') {
+        toast.error('Você precisa estar autenticado para criar um orçamento');
+      } else if (error.data?.code === 'INTERNAL_SERVER_ERROR') {
+        toast.error('Erro no servidor. Tente novamente mais tarde.');
+      } else {
+        toast.error(error.message || 'Erro ao criar orçamento');
+      }
+    },
+  });
 
   const [items, setItems] = useState<BudgetItemWithCalculation[]>([]);
   const [currentItem, setCurrentItem] = useState<BudgetItemInput>({
@@ -47,7 +67,7 @@ export default function Budget() {
   const [clientPhone, setClientPhone] = useState("");
 
   // Calculate price for current item
-  const { data: priceData } = calculatePrice(
+  const calculatePriceQuery = trpc.budget.calculatePrice.useQuery(
     {
       materialId: currentItem.materialId,
       length: currentItem.length,
@@ -62,6 +82,7 @@ export default function Budget() {
         currentItem.quantity > 0,
     }
   );
+  const { data: currentPriceData } = calculatePriceQuery;
 
   const getProductName = (id: number) => {
     return products?.find((p) => p.id === id)?.name || "Produto";
@@ -83,16 +104,16 @@ export default function Budget() {
       return;
     }
 
-    if (!priceData) {
+    if (!currentPriceData) {
       toast.error("Aguarde o cálculo de preço");
       return;
     }
 
     const newItem: BudgetItemWithCalculation = {
       ...currentItem,
-      squareMeter: priceData.squareMeter,
-      unitPrice: priceData.unitPrice,
-      totalPrice: priceData.totalPrice,
+      squareMeter: currentPriceData.squareMeter,
+      unitPrice: currentPriceData.unitPrice,
+      totalPrice: currentPriceData.totalPrice,
       productName: getProductName(currentItem.productId),
       materialName: getMaterialName(currentItem.materialId),
     };
@@ -142,7 +163,7 @@ export default function Budget() {
       setItems([]);
       navigate(`/budget/${result.budgetId}`);
     } catch (error) {
-      toast.error("Erro ao criar orçamento");
+      // Error is already handled by mutation onError
       console.error(error);
     }
   };

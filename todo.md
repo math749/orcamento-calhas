@@ -208,7 +208,7 @@
 - [ ] Otimizar carregamento de imagens em OptimizedImage
 
 ### Médios (Qualidade)
-- [ ] Padronizar uso de tRPC hooks em Budget.tsx
-- [ ] Adicionar tratamento de erros tRPC com toasts
+- [x] Padronizar uso de tRPC hooks em Budget.tsx
+- [x] Adicionar tratamento de erros tRPC com toasts
 - [ ] Adicionar rate limiting em generatePdfDescription
 - [ ] Melhorar validação de budgetId em rotas
