@@ -25,6 +25,8 @@ import {
 import { invokeLLM } from "./_core/llm";
 import { notifyOwner } from "./_core/notification";
 import { TRPCError } from "@trpc/server";
+import { normalizePhoneNumber, isValidPhoneNumber } from "../shared/phone-utils";
+import { sanitizeForHtml } from "../shared/html-utils";
 
 export const appRouter = router({
   system: systemRouter,
@@ -102,10 +104,10 @@ export const appRouter = router({
     calculatePrice: publicProcedure
       .input(
         z.object({
-          materialId: z.number(),
-          length: z.number(), // in cm
-          width: z.number(), // in cm
-          quantity: z.number(),
+          materialId: z.number().int().positive(),
+          length: z.number().positive().finite().max(100000),
+          width: z.number().positive().finite().max(100000),
+          quantity: z.number().int().positive().max(1000),
         })
       )
       .query(async ({ input }) => {
@@ -130,18 +132,21 @@ export const appRouter = router({
     createBudget: protectedProcedure
       .input(
         z.object({
-          clientName: z.string().optional(),
-          clientEmail: z.string().email().optional(),
-          clientPhone: z.string().optional(),
+          clientName: z.string().min(1).max(255).optional(),
+          clientEmail: z.string().email().max(320).optional(),
+          clientPhone: z.string().refine(
+            (phone) => !phone || isValidPhoneNumber(phone),
+            "Telefone invalido. Use formato brasileiro (10 ou 11 digitos)"
+          ).optional(),
           items: z.array(
             z.object({
-              productId: z.number(),
-              materialId: z.number(),
-              quantity: z.number(),
-              length: z.number(),
-              width: z.number(),
+              productId: z.number().int().positive(),
+              materialId: z.number().int().positive(),
+              quantity: z.number().int().positive().max(1000),
+              length: z.number().positive().finite().max(100000),
+              width: z.number().positive().finite().max(100000),
             })
-          ),
+          ).min(1),
         })
       )
       .mutation(async ({ input, ctx }) => {
@@ -171,9 +176,9 @@ export const appRouter = router({
         // Create budget
         const budgetResult = await createBudget({
           userId: ctx.user.id,
-          clientName: input.clientName,
-          clientEmail: input.clientEmail,
-          clientPhone: input.clientPhone,
+          clientName: input.clientName ? sanitizeForHtml(input.clientName) : undefined,
+          clientEmail: input.clientEmail ? sanitizeForHtml(input.clientEmail) : undefined,
+          clientPhone: input.clientPhone ? normalizePhoneNumber(input.clientPhone) : undefined,
           totalPrice,
           status: "completed",
         });

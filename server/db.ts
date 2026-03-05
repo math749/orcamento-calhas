@@ -153,18 +153,21 @@ export async function createBudgetItem(item: InsertBudgetItem) {
 export async function getBudgetItems(budgetId: number) {
   const db = await getDb();
   if (!db) return [];
-  const items = await db.select().from(budgetItems).where(eq(budgetItems.budgetId, budgetId));
   
-  // Enrich items with product and material details
-  const enrichedItems = await Promise.all(
-    items.map(async (item) => ({
-      ...item,
-      product: await getProductById(item.productId),
-      material: await getMaterialById(item.materialId),
-    }))
-  );
+  // Get items with product and material in a single query using joins
+  const items = await db
+    .select()
+    .from(budgetItems)
+    .leftJoin(products, eq(budgetItems.productId, products.id))
+    .leftJoin(materials, eq(budgetItems.materialId, materials.id))
+    .where(eq(budgetItems.budgetId, budgetId));
   
-  return enrichedItems;
+  // Transform result to match expected format
+  return items.map(row => ({
+    ...row.budgetItems,
+    product: row.products,
+    material: row.materials,
+  }));
 }
 
 export async function updateBudgetStatus(budgetId: number, status: 'draft' | 'completed' | 'sent') {

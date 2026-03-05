@@ -191,3 +191,24 @@
 - [x] Adicionar overlay semi-transparente para legibilidade
 - [x] Otimizar imagem para diferentes tamanhos de tela
 - [x] Testar responsividade com background
+
+
+## Auditoria e Correção de Bugs (Identificados)
+
+### Críticos (Segurança/Dados)
+- [x] Corrigir formatação de WhatsApp - evitar prefixo 55 duplicado
+- [x] Adicionar validação Zod para campos numéricos (length, width, quantity)
+- [x] Mitigar XSS no PDF - escapar HTML em valores interpolados
+- [x] Validar clientPhone com regex/normalização
+
+### Altos (Performance/UX)
+- [x] Eliminar N+1 queries em getBudgetItems
+- [x] Adicionar guarda de autenticação no client (redirect se não logado)
+- [ ] Corrigir semântica de preços (unitPrice vs itemPrice)
+- [ ] Otimizar carregamento de imagens em OptimizedImage
+
+### Médios (Qualidade)
+- [ ] Padronizar uso de tRPC hooks em Budget.tsx
+- [ ] Adicionar tratamento de erros tRPC com toasts
+- [ ] Adicionar rate limiting em generatePdfDescription
+- [ ] Melhorar validação de budgetId em rotas

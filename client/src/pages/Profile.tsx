@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 export default function Profile() {
   const [, navigate] = useLocation();
-  const { user } = useAuth();
+  const { loading: authLoading, user } = useAuth({ redirectOnUnauthenticated: true });
   const logoutMutation = trpc.auth.logout.useMutation();
 
   const handleLogout = async () => {
@@ -20,6 +20,18 @@ export default function Profile() {
       toast.error("Erro ao desconectar");
     }
   };
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8">
+        <div className="container mx-auto px-4">
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 bg-slate-200 rounded w-1/3"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8">

@@ -13,7 +13,7 @@ import { toast } from "sonner";
 
 export default function Admin() {
   const [, navigate] = useLocation();
-  const { user } = useAuth();
+  const { loading: authLoading, user } = useAuth({ redirectOnUnauthenticated: true });
   const { data: products } = trpc.catalog.getProducts.useQuery();
   const { data: materials } = trpc.catalog.getMaterials.useQuery();
   const { data: budgets } = trpc.admin.getAllBudgets.useQuery();
@@ -23,6 +23,19 @@ export default function Admin() {
 
   const [newProduct, setNewProduct] = useState({ name: "", type: "calha", description: "" });
   const [editingMaterial, setEditingMaterial] = useState<any>(null);
+
+  // Wait for auth to load
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8">
+        <div className="container mx-auto px-4">
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 bg-slate-200 rounded w-1/3"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Check if user is admin
   if (user?.role !== "admin") {

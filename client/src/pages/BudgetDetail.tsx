@@ -1,5 +1,6 @@
-import { useParams, useLocation } from "wouter";
+import { useLocation, useParams } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Download, Printer, Copy, MessageCircle } from "lucide-react";
@@ -10,11 +11,28 @@ import FinancialAnalysis from "@/components/FinancialAnalysis";
 export default function BudgetDetail() {
   const { id } = useParams<{ id: string }>();
   const [, navigate] = useLocation();
+  const { loading: authLoading, isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
   const budgetId = parseInt(id || "0");
 
   const { data: budgetData, isLoading } = trpc.budget.getBudget.useQuery(budgetId);
   const { data: pdfData } = trpc.pdf.generateBudgetPDF.useQuery(budgetId);
   const [copying, setCopying] = useState(false);
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8">
+        <div className="container mx-auto px-4">
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 bg-slate-200 rounded w-1/3"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null; // Will redirect via useAuth hook
+  }
 
   if (isLoading) {
     return (

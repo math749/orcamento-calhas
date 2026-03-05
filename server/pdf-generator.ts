@@ -1,4 +1,5 @@
 import { invokeLLM } from "./_core/llm";
+import { escapeHtml } from "../shared/html-utils";
 
 interface BudgetItemForPDF {
   productName: string;
@@ -73,13 +74,13 @@ export async function generateBudgetPDF(budget: BudgetForPDF): Promise<string> {
           ${budget.clientName ? `
           <div class="info-item">
             <div class="info-label">Cliente</div>
-            <div class="info-value">${budget.clientName}</div>
+            <div class="info-value">${escapeHtml(budget.clientName)}</div>
           </div>
           ` : ''}
           ${budget.clientEmail ? `
           <div class="info-item">
             <div class="info-label">Email</div>
-            <div class="info-value">${budget.clientEmail}</div>
+            <div class="info-value">${escapeHtml(budget.clientEmail)}</div>
           </div>
           ` : ''}
         </div>
@@ -98,8 +99,8 @@ export async function generateBudgetPDF(budget: BudgetForPDF): Promise<string> {
           <tbody>
             ${budget.items.map(item => `
             <tr>
-              <td>${item.productName}</td>
-              <td>${item.materialName}</td>
+              <td>${escapeHtml(item.productName)}</td>
+              <td>${escapeHtml(item.materialName)}</td>
               <td class="text-center">${(item.squareMeter / 10000).toFixed(2)}</td>
               <td class="text-center">${item.quantity}</td>
               <td class="text-right">R$ ${(item.unitPrice / 100).toFixed(2)}</td>

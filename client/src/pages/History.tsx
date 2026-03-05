@@ -1,5 +1,6 @@
 import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Eye, Download } from "lucide-react";
@@ -8,7 +9,24 @@ import { ptBR } from "date-fns/locale";
 
 export default function History() {
   const [, navigate] = useLocation();
+  const { loading: authLoading, isAuthenticated } = useAuth({ redirectOnUnauthenticated: true });
   const { data: budgets, isLoading } = trpc.budget.listUserBudgets.useQuery();
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8">
+        <div className="container mx-auto px-4">
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 bg-slate-200 rounded w-1/3"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null; // Will redirect via useAuth hook
+  }
 
   if (isLoading) {
     return (
