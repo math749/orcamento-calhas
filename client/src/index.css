@@ -175,3 +175,24 @@
     }
   }
 }
+  /* Video background optimization */
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Ensure smooth playback on mobile devices */
+  @media (max-width: 768px) {
+    video {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
+  /* Prevent video from being selected */
+  video {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }

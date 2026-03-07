@@ -212,3 +212,13 @@
 - [x] Adicionar tratamento de erros tRPC com toasts
 - [ ] Adicionar rate limiting em generatePdfDescription
 - [ ] Melhorar validação de budgetId em rotas
+
+
+## Integração de Vídeo Institucional (Nova Funcionalidade)
+- [x] Otimizar vídeo para web (reduzir tamanho mantendo qualidade)
+- [x] Integrar vídeo como background da hero section
+- [x] Configurar autoplay, muted e loop
+- [x] Adicionar overlay semi-transparente para legibilidade
+- [x] Melhorar styling do card de features
+- [x] Adicionar estilos CSS para otimização de vídeo
+- [x] Testar responsividade em mobile/tablet/desktop

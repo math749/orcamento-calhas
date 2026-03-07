@@ -47,11 +47,20 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section with Background */}
-      <section 
-        className="relative min-h-screen md:min-h-[600px] bg-cover bg-center bg-fixed flex items-center"
-        style={{ backgroundImage: 'url(/hero-background.jpg)' }}
-      >
+      {/* Hero Section with Video Background */}
+      <section className="relative min-h-screen md:min-h-[600px] flex items-center overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/hero-background.jpg"
+        >
+          <source src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030877854/mLvyH7FvayhGTzt26bHicM/hero-video_27ec17a0.mp4" type="video/mp4" />
+        </video>
+        
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/45"></div>
         
@@ -83,7 +92,7 @@ export default function Home() {
               </div>
             </div>
             <div className="relative mt-8 md:mt-0">
-              <div className="bg-gradient-to-br from-blue-900/90 to-orange-500/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 text-white shadow-2xl">
+              <div className="bg-gradient-to-br from-blue-900/95 to-orange-500/95 backdrop-blur-md rounded-2xl p-6 md:p-8 text-white shadow-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
                 <div className="space-y-3 md:space-y-4">
                   <div className="flex items-center gap-2 md:gap-3">
                     <Calculator className="w-6 md:w-8 h-6 md:h-8" />
