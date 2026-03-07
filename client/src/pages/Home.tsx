@@ -68,13 +68,13 @@ export default function Home() {
         <div className="container mx-auto px-4 py-12 md:py-20 relative z-10 w-full">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight drop-shadow-lg">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight drop-shadow-lg animate-fade-in-up">
                 Orçamentos de Calhas com <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Elegância</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/95 mb-6 md:mb-8 drop-shadow-md">
+              <p className="text-base sm:text-lg md:text-xl text-white/95 mb-6 md:mb-8 drop-shadow-md animate-fade-in-up-delay-1">
                 A solução completa para orçar calhas, rufos e pingadeiras com precisão e elegância.
               </p>
-              <div className="flex gap-2 md:gap-4 flex-col sm:flex-row">
+              <div className="flex gap-2 md:gap-4 flex-col sm:flex-row animate-fade-in-up-delay-2">
                 {isAuthenticated ? (
                   <Button onClick={() => navigate("/budget")} className="gap-2 bg-orange-500 hover:bg-orange-600 w-full sm:w-auto text-sm md:text-base px-3 md:px-6 py-2 md:py-3">
                     Criar Orçamento <ArrowRight className="w-4 md:w-5 h-4 md:h-5" />
@@ -91,7 +91,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative mt-8 md:mt-0">
+            <div className="relative mt-8 md:mt-0 animate-fade-in-up-delay-3">
               <div className="bg-gradient-to-br from-blue-900/95 to-orange-500/95 backdrop-blur-md rounded-2xl p-6 md:p-8 text-white shadow-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
                 <div className="space-y-3 md:space-y-4">
                   <div className="flex items-center gap-2 md:gap-3">

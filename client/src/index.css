@@ -196,3 +196,36 @@
     user-select: none;
     -webkit-touch-callout: none;
   }
+
+
+  /* Fade-in animation for hero title */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  /* Stagger animation for multiple elements */
+  .animate-fade-in-up-delay-1 {
+    animation: fadeInUp 1s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-up-delay-2 {
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-up-delay-3 {
+    animation: fadeInUp 1s ease-out 0.6s forwards;
+    opacity: 0;
+  }

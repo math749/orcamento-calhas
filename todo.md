@@ -222,3 +222,12 @@
 - [x] Melhorar styling do card de features
 - [x] Adicionar estilos CSS para otimização de vídeo
 - [x] Testar responsividade em mobile/tablet/desktop
+
+
+## Animações e Micro-interações (Nova Funcionalidade)
+- [x] Criar animação fade-in com translateY no CSS
+- [x] Aplicar fade-in ao título principal
+- [x] Aplicar fade-in com delay ao parágrafo descritivo
+- [x] Aplicar fade-in com delay aos botões CTA
+- [x] Aplicar fade-in com delay ao card de features
+- [x] Testar animações em diferentes navegadores
