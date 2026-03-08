@@ -10,17 +10,19 @@ import BudgetDetail from "./pages/BudgetDetail";
 import History from "./pages/History";
 import Admin from "./pages/Admin";
 import Profile from "./pages/Profile";
+import Portfolio from "./pages/Portfolio";
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/budget"} component={Budget} />
-      <Route path={"/budget/:id"} component={BudgetDetail} />
-      <Route path={"/history"} component={History} />
-      <Route path={"/admin"} component={Admin} />
-      <Route path={"/profile"} component={Profile} />
-      <Route path={"/404"} component={NotFound} />
+      <Route path="/" component={Home} />
+      <Route path="/budget" component={Budget} />
+      <Route path="/budget/:id" component={BudgetDetail} />
+      <Route path="/history" component={History} />
+      <Route path="/admin" component={Admin} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/portfolio" component={Portfolio} />
+      <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
