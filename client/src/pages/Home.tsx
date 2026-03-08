@@ -92,19 +92,39 @@ export default function Home() {
               </div>
             </div>
             <div className="relative mt-8 md:mt-0 animate-fade-in-up-delay-3">
-              <div className="bg-gradient-to-br from-blue-900/95 to-orange-500/95 backdrop-blur-md rounded-2xl p-6 md:p-8 text-white shadow-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
-                <div className="space-y-3 md:space-y-4">
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <Calculator className="w-6 md:w-8 h-6 md:h-8" />
-                    <span className="text-base md:text-xl font-semibold">Cálculos Precisos</span>
+              <div className="bg-gradient-to-br from-blue-950/90 via-blue-900/85 to-orange-500/90 backdrop-blur-md rounded-3xl p-8 md:p-10 text-white shadow-2xl border border-white/15 hover:border-white/30 hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+                <div className="space-y-5 md:space-y-6">
+                  {/* Feature 1 */}
+                  <div className="flex items-center gap-4 md:gap-5 pb-5 md:pb-6 border-b border-white/20 hover:border-white/40 transition-colors duration-300">
+                    <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                      <Calculator className="w-7 md:w-8 h-7 md:h-8 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-base md:text-lg font-bold text-white leading-tight">Cálculos Precisos</p>
+                      <p className="text-xs md:text-sm text-white/80 mt-1">Matemática exata para seus orçamentos</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <Zap className="w-6 md:w-8 h-6 md:h-8" />
-                    <span className="text-base md:text-xl font-semibold">Resultados Instantâneos</span>
+                  
+                  {/* Feature 2 */}
+                  <div className="flex items-center gap-4 md:gap-5 pb-5 md:pb-6 border-b border-white/20 hover:border-white/40 transition-colors duration-300">
+                    <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                      <Zap className="w-7 md:w-8 h-7 md:h-8 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-base md:text-lg font-bold text-white leading-tight">Resultados Instantâneos</p>
+                      <p className="text-xs md:text-sm text-white/80 mt-1">Geração de orçamentos em segundos</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <FileText className="w-6 md:w-8 h-6 md:h-8" />
-                    <span className="text-base md:text-xl font-semibold">PDF Profissional</span>
+                  
+                  {/* Feature 3 */}
+                  <div className="flex items-center gap-4 md:gap-5">
+                    <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                      <FileText className="w-7 md:w-8 h-7 md:h-8 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-base md:text-lg font-bold text-white leading-tight">PDF Profissional</p>
+                      <p className="text-xs md:text-sm text-white/80 mt-1">Documentos prontos para impressão</p>
+                    </div>
                   </div>
                 </div>
               </div>
