@@ -49,17 +49,16 @@ export default function Home() {
 
       {/* Hero Section with Diagonal */}
       <section className="relative min-h-screen md:min-h-[700px] flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-50"
-          poster="/hero-background.jpg"
-        >
-          <source src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030877854/mLvyH7FvayhGTzt26bHicM/hero-video_27ec17a0.mp4" type="video/mp4" />
-        </video>
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 w-full h-full opacity-40"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=700&fit=crop)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        />
         
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent"></div>
